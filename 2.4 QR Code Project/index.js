@@ -13,13 +13,17 @@ inquirer
   }
   ])
   .then((answers) => {
-    console.log(`URL is succesfully saved!`);
-    console.log(answers);
+      const url = answers.URL;
+      var qr_svg = qr.image(url);
+      qr_svg.pipe(fs.createWriteStream('my_qr_img.png'));
+      fs.writeFile("URL.txt", url, (err) =>{
+        if(err) throw err;
+        console.log("The file has been saved.");
+    });
   })
   .catch((error) => {
     if (error.isTtyError) {
-        var qr_svg = qr.image(answers);
-        qr_svg.pipe(require('fs').createWriteStream('my_qr_img.png'));
+        // Prompt couldn't be rendered in the current environment
     } else {
       // Something else went wrong
     }
