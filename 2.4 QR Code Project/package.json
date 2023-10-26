@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nirglus/App-Brewary-WD-Projects/issues"
   },
-  "homepage": "https://github.com/nirglus/App-Brewary-WD-Projects/tree/main#readme"
+  "homepage": "https://github.com/nirglus/App-Brewary-WD-Projects/tree/main#readme",
+  "dependencies": {
+    "inquirer": "^9.2.11"
+  }
 }
