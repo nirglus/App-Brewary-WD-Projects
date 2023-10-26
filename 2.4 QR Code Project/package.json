@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "QR code project",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/nirglus/App-Brewary-WD-Projects/tree/main#readme",
   "dependencies": {
-    "inquirer": "^9.2.11"
+    "inquirer": "^9.2.11",
+    "qr-image": "^3.2.0"
   }
 }
