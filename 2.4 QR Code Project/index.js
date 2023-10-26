@@ -4,20 +4,22 @@
 3. Create a txt file to save the user input using the native fs node module.
 */
 import inquirer from 'inquirer';
-import qr from `qr-image`;
+import qr from 'qr-image';
 import fs from 'fs';
 inquirer
   .prompt([{
-      message: `Type a URL`,
+      message: `Type a URL:`,
       name: `URL`
   }
   ])
   .then((answers) => {
     console.log(`URL is succesfully saved!`);
+    console.log(answers);
   })
   .catch((error) => {
     if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
+        var qr_svg = qr.image(answers);
+        qr_svg.pipe(require('fs').createWriteStream('my_qr_img.png'));
     } else {
       // Something else went wrong
     }
