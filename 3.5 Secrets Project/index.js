@@ -28,6 +28,8 @@ app.get("/", (req, res) =>{
 app.post("/check", (req, res) =>{
     if (userAuthorised){
         res.sendFile(__dirname + "/public/secret.html");
+    } else{
+        res.redirect("/");
     }
 });
 
