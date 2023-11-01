@@ -26,8 +26,11 @@ app.get("/", (req, res) =>{
 });
 
 app.post("/check", (req, res) =>{
-    console.log(req.body);
-})
+    if (userAuthorised){
+        res.sendFile(__dirname + "/public/secret.html");
+    }
+});
+
 app.listen(port , () =>{
     console.log(`Server is running on port ${port}`);
 });
