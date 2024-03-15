@@ -1,14 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import { pgConfig } from "./config/pgConfig.js";
 
-const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "world",
-  password: "123456",
-  port: 5432,
-});
+const db = new pg.Client(pgConfig);
 
 const app = express();
 const port = 3000;
@@ -63,6 +58,7 @@ async function nextQuestion() {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
 
   currentQuestion = randomCountry;
+  console.log(currentQuestion);
 }
 
 app.listen(port, () => {
