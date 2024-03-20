@@ -1,17 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import { pgConfig } from "../8.3 Travel Tracker/config/pgConfig.js";
 
 const app = express();
 const port = 3000;
 
-const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "world",
-  password: "123456",
-  port: 5432,
-});
+const db = new pg.Client(pgConfig);
 db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
