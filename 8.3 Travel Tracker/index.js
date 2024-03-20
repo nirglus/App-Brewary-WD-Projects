@@ -14,10 +14,17 @@ let countries = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const checkVisisted = async() =>{
+    const result = await db.query("SELECT country_code FROM visited_countries");
+    let countries = [];
+    countries = result.rows.map(row => row.country_code);
+    console.log({countries});
+    return countries;
+}
+
 app.get("/", async (req, res) => {
-  const result = await db.query("SELECT country_code FROM visited_countries");
-  countries = result.rows.map(row => row.country_code);
-  console.log({countries});
+  const countries = await checkVisisted();
+  
   res.render("index.ejs", {countries: countries, total: countries.length})
   db.end();
 });
@@ -45,10 +52,12 @@ app.post("/add", async (req, res) =>{
           return
         }
         res.redirect("/");
+        db.end();
       })
   })
 
 })
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
