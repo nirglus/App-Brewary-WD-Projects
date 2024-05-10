@@ -1,11 +1,10 @@
+import React from "react"
 
-function Todos() {
+const Todos: React.FC = (props) => {
   return (
     <div>
       <ul>
-        <li>Learn React</li>
-        <li>Learn TypeScript</li>
-        <li>Learn to combine</li>
+        {/* {props.children} */}
       </ul>
     </div>
   )
